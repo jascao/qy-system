@@ -9,5 +9,5 @@ import org.springframework.http.ResponseEntity;
  * @Date 2021/7/13 10:24 AM
  **/
 public interface HeartBeatService {
-    ResponseEntity heartBeat();
+    ResponseEntity<String> heartBeat();
 }

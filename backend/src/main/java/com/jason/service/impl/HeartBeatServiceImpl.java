@@ -20,7 +20,7 @@ public class HeartBeatServiceImpl implements HeartBeatService {
     private UserRepository userRepo;
 
     @Override
-    public ResponseEntity heartBeat() {
+    public ResponseEntity<String> heartBeat() {
         User u = userRepo.getOne(1l);
         System.out.println(u);
         return new ResponseEntity<>("OK2", HttpStatus.OK);
