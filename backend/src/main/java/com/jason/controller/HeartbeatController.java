@@ -1,7 +1,10 @@
 package com.jason.controller;
 
+import com.jason.service.HeartBeatService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/heartbeat")
 public class HeartbeatController {
+    @Autowired
+    HeartBeatService heartBeatService;
+
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity heartBeat() {
         return new ResponseEntity<>("OK", HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/liveness")
+    public ResponseEntity getHeartBeat() {
+        return heartBeatService.heartBeat();
     }
 }
